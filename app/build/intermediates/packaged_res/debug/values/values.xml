@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MechaRams STEM Trivia</string>
+    <style name="Theme.MechaRamsTrivia" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">#0d0d0d</item>
+        <item name="android:statusBarColor">#0d0d0d</item>
+        <item name="android:navigationBarColor">#0d0d0d</item>
+    </style>
+</resources>

@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mecharams.trivia.app-mergeDebugResources-18:/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\is14\\.gradle\\caches\\transforms-3\\55fdf2e26afd01b36bf19b99a239f8ce\\transformed\\appcompat-1.6.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}
