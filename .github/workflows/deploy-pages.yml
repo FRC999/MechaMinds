@@ -3,8 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - "app/src/main/assets/**"
   workflow_dispatch:   # allows manual trigger from GitHub Actions tab
 
 permissions:
