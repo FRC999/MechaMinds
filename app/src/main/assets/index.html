@@ -6,10 +6,15 @@
     <meta name="mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <title>MechaRams STEM Trivia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <style>
+        /* Offline font fallbacks — used instantly while/if Google Fonts loads */
+        body{font-family:'Nunito','Segoe UI',Arial,sans-serif;}
+        .hero-title,.bar-name,.pts-badge,.results-title,.ring-num,.stat-val,.btn-fire,.next-btn,.launch-btn,.lb-rank,.lb-score,.dental-title{font-family:'Fredoka One','Arial Rounded MT Bold','Trebuchet MS',Arial,sans-serif;}
+    </style>
     <style>
         *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-        html,body{height:100%;background:#0d0d0d;overflow x:hidden;}
+        html,body{height:100%;background:#0d0d0d;overflow-x:hidden;}
         body{font-family:'Nunito',Arial,sans-serif;color:#fff;overscroll-behavior:none;}
         #app{max-width:600px;margin:0 auto;min-height:100vh;background:#0d0d0d;position:relative;}
         .page{display:none;flex-direction:column;align-items:center;width:100%;}
@@ -43,7 +48,7 @@
         .sel-mid .age-name{color:#55ee77;}
         .sel-older .age-name{color:#ffbb44;}
         .age-range{font-size:11px;color:#555;margin-top:2px;}
-        .launch-btn{margin:22px 20px 0;width:calc(100% 40px);background:#cc0000;color:#fff;border:none;border-radius:50px;padding:18px;font-family:'Fredoka One',cursive;font-size:20px;cursor:pointer;letter-spacing:1px;transition:background .15s,transform .1s;}
+        .launch-btn{margin:22px 20px 0;width:calc(100% - 40px);background:#cc0000;color:#fff;border:none;border-radius:50px;padding:18px;font-family:'Fredoka One',cursive;font-size:20px;cursor:pointer;letter-spacing:1px;transition:background .15s,transform .1s;}
         .launch-btn:active{transform:scale(.98);background:#ee1111;}
         .footer-tag{font-size:11px;color:#fff;margin-top:20px;letter-spacing:1px;text-transform:uppercase;}
         #quiz{padding:0;justify-content:flex-start;}
@@ -56,7 +61,7 @@
         .prog-label{font-size:11px;color:#555;text-align:right;margin-top:3px;font-weight:700;}
         .streak-badge{font-size:13px;font-weight:800;color:#ffaa33;background:#2a1a00;border:1.5px solid #cc7700;border-radius:50px;padding:4px 10px;display:none;}
         .streak-badge.show{display:block;}
-        .quiz-card{margin:14px 14px 0;background:#161616;border:1px solid #252525;border-radius:18px;padding:20px;width:calc(100% 28px);}
+        .quiz-card{margin:14px 14px 0;background:#161616;border:1px solid #252525;border-radius:18px;padding:20px;width:calc(100% - 28px);}
         .q-cat-badge{display:inline-flex;align-items:center;gap:5px;background:#1a0000;border:1px solid #550000;color:#cc4444;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:50px;margin-bottom:12px;}
         .q-text{font-size:18px;font-weight:800;color:#f0f0f0;line-height:1.5;}
         .answers{display:flex;flex-direction:column;gap:10px;margin:12px 14px 0;}
@@ -72,7 +77,7 @@
         .feedback-card.correct{background:#0c2a0c;border:1px solid #2a8a2a;color:#7dea7d;}
         .feedback-card.wrong{background:#2a0c0c;border:1px solid #aa2222;color:#ee8888;}
         .fb-fact{color:#999;font-weight:600;margin-top:6px;font-size:13px;}
-        .next-btn{margin:12px 14px 16px;width:calc(100% 28px);background:#cc0000;color:#fff;border:none;border-radius:50px;padding:16px;font-family:'Fredoka One',cursive;font-size:17px;cursor:pointer;letter-spacing:.5px;display:none;transition:background .15s;}
+        .next-btn{margin:12px 14px 16px;width:calc(100% - 28px);background:#cc0000;color:#fff;border:none;border-radius:50px;padding:16px;font-family:'Fredoka One',cursive;font-size:17px;cursor:pointer;letter-spacing:.5px;display:none;transition:background .15s;}
         .next-btn.show{display:block;}
         .next-btn:active{background:#ee1111;}
         #results{justify-content:flex-start;padding:0;}
@@ -120,7 +125,6 @@
         .lb-score{font-family:'Fredoka One',cursive;font-size:22px;color:#cc0000;}
         .lb-empty{background:#111;border:1px dashed #333;border-radius:12px;padding:16px;text-align:center;color:#777;font-size:13px;line-height:1.6;}
 
-        .home-actions{display:flex;flex-direction:column;gap:12px;width:100%;padding:0 20px;margin-top:16px;}
         .home-action-btn{width:100%;height:64px;display:flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:18px;padding:0 18px;font-size:18px;font-weight:900;cursor:pointer;transition:transform .12s ease,opacity .15s ease,box-shadow .2s ease;box-shadow:0 10px 24px rgba(0,0,0,.18);}
         .home-action-btn:active{transform:scale(.98);}
         .home-action-btn span{display:inline-flex;align-items:center;gap:10px;justify-content:center;line-height:1.1;}
@@ -548,8 +552,10 @@
     function goDentalSlide(i){dentalSlideIndex=(i+DENTAL_SLIDES.length)%DENTAL_SLIDES.length;renderDentalSlide();restartDentalAutoplay();}
     function nextDentalSlide(){goDentalSlide(dentalSlideIndex+1);}
     function prevDentalSlide(){goDentalSlide(dentalSlideIndex-1);}
-    function stopDentalAutoplay(){}
-    function startDentalAutoplay(){}
+    const DENTAL_AUTO_MS=6000;
+    function stopDentalAutoplay(){if(dentalAutoTimer){clearInterval(dentalAutoTimer);dentalAutoTimer=null;}}
+    function startDentalAutoplay(){stopDentalAutoplay();dentalAutoTimer=setInterval(()=>{goDentalSlide(dentalSlideIndex+1);},DENTAL_AUTO_MS);}
+    function restartDentalAutoplay(){if(dentalAutoplay)startDentalAutoplay();}
     function openDentalShow(){window.location.href='dental.html';}
 
     document.addEventListener("DOMContentLoaded",()=>{
