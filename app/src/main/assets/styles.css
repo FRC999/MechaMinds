@@ -1,0 +1,222 @@
+/* ===============================================
+   1. RESET & BASE
+=============================================== */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;background:#0d0d0d;overflow-x:hidden;}
+body{font-family:'Nunito',Arial,sans-serif;color:#fff;overscroll-behavior:none;}
+
+/* ===============================================
+   2. LAYOUT -- app shell & page visibility
+=============================================== */
+#app{max-width:600px;margin:0 auto;min-height:100vh;background:#0d0d0d;position:relative;}
+.page{display:none;flex-direction:column;align-items:center;width:100%;}
+.page-home{display:flex;min-height:100vh;}
+#quiz{padding:0;justify-content:flex-start;}
+#dentalShow{justify-content:flex-start;min-height:0;height:auto;}
+#results{justify-content:flex-start;padding:0;}
+
+/* ===============================================
+   3. SHARED COMPONENTS -- top bar, section labels
+=============================================== */
+.top-bar{background:#111;width:100%;padding:10px 16px;display:flex;align-items:center;gap:12px;border-bottom:2px solid #cc0000;flex-shrink:0;}
+.top-bar img{width:44px;height:44px;object-fit:contain;border-radius:8px;flex-shrink:0;}
+.bar-name{font-family:'Fredoka One',cursive;font-size:17px;color:#cc0000;letter-spacing:.5px;}
+.bar-name-sm{font-size:13px;}
+.bar-sub{font-size:10px;color:#fff;letter-spacing:1px;text-transform:uppercase;margin-top:1px;}
+.topbar-text{margin-left:4px;}
+.sec-lbl{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#555;align-self:flex-start;padding:0 20px;margin-top:22px;margin-bottom:10px;}
+.sec-lbl-spaced{margin-top:20px;}
+.footer-tag{font-size:11px;color:#fff;margin-top:20px;letter-spacing:1px;text-transform:uppercase;}
+
+/* ===============================================
+   4. HOME SCREEN
+=============================================== */
+#home{padding-bottom:32px;}
+.home-hero{width:100%;background:#111;padding:28px 20px 22px;display:flex;flex-direction:column;align-items:center;gap:12px;border-bottom:1px solid #1e1e1e;}
+.home-hero img{width:160px;height:160px;object-fit:contain;border-radius:16px;}
+.hero-title{font-family:'Fredoka One',cursive;font-size:34px;color:#fff;text-align:center;letter-spacing:1px;line-height:1.1;}
+.hero-title span{color:#cc0000;}
+.hero-sub{font-size:14px;color:#888;text-align:center;max-width:310px;line-height:1.6;}
+.age-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+.age-badge{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:50px;padding:4px 13px;font-size:12px;font-weight:700;color:#666;}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 20px;width:100%;}
+.cat-pill{background:#1a1a1a;border:1.5px solid #2a2a2a;border-radius:50px;padding:9px 4px;font-size:12px;font-weight:800;color:#777;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:3px;user-select:none;text-align:center;}
+.cat-pill:active{transform:scale(.95);}
+.cat-pill.selected{background:#cc0000;border-color:#cc0000;color:#fff;}
+.age-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:0 20px;width:100%;}
+.age-btn{background:#1a1a1a;border:1.5px solid #2a2a2a;border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .15s;user-select:none;}
+.age-btn:active{transform:scale(.97);}
+.age-btn.sel-young{background:#0a1a2a;border-color:#3399ff;}
+.age-btn.sel-mid{background:#0a2a0a;border-color:#33cc55;}
+.age-btn.sel-older{background:#2a1a00;border-color:#ffaa33;}
+.age-icon{font-size:26px;}
+.age-name{font-size:13px;font-weight:800;margin-top:5px;}
+.sel-young .age-name{color:#66bbff;}
+.sel-mid .age-name{color:#55ee77;}
+.sel-older .age-name{color:#ffbb44;}
+.age-range{font-size:11px;color:#555;margin-top:2px;}
+.home-actions{display:flex;flex-direction:column;gap:12px;width:100%;padding:0 20px;margin-top:16px;}
+.home-action-btn{width:100%;height:64px;display:flex;align-items:center;justify-content:center;gap:10px;border:none;border-radius:18px;padding:0 18px;font-size:18px;font-weight:900;cursor:pointer;transition:transform .12s ease,opacity .15s ease,box-shadow .2s ease;box-shadow:0 10px 24px rgba(0,0,0,.18);}
+.home-action-btn:active{transform:scale(.98);}
+.home-action-btn span{display:inline-flex;align-items:center;gap:10px;justify-content:center;line-height:1.1;}
+.launch-btn{background:#cc0000;color:#fff;border:none;font-family:'Fredoka One',cursive;font-size:20px;letter-spacing:1px;box-shadow:0 12px 28px rgba(204,0,0,.24);}
+.launch-btn:active{background:#ee1111;}
+.info-btn{background:linear-gradient(135deg,#ffe168,#ffc928);color:#181818;border:1px solid #f4c71f;box-shadow:0 12px 28px rgba(255,201,40,.26);}
+.dental-btn{background:linear-gradient(135deg,#1b3c66,#2d7fc1);color:#fff;box-shadow:0 12px 28px rgba(45,127,193,.22);}
+.info-btn:active,.dental-btn:active{transform:scale(.98);}
+.attract-message{margin:2px 20px 0;min-height:24px;text-align:center;font-size:13px;font-weight:800;letter-spacing:.8px;color:#9ecfff;opacity:.88;transition:opacity .3s ease,transform .3s ease;}
+
+/* ===============================================
+   5. QUIZ SCREEN
+=============================================== */
+.quiz-topbar{background:#111;width:100%;padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #1a1a1a;flex-shrink:0;}
+.pts-badge{background:#1a0000;border:1.5px solid #cc0000;border-radius:50px;padding:5px 14px;font-family:'Fredoka One',cursive;font-size:15px;color:#cc0000;min-width:74px;text-align:center;}
+.prog-wrap{flex:1;}
+.prog-track{height:8px;background:#2a2a2a;border-radius:4px;}
+.prog-fill{height:8px;background:#cc0000;border-radius:4px;transition:width .4s;width:0;}
+.prog-label{font-size:11px;color:#555;text-align:right;margin-top:3px;font-weight:700;}
+.streak-badge{font-size:13px;font-weight:800;color:#ffaa33;background:#2a1a00;border:1.5px solid #cc7700;border-radius:50px;padding:4px 10px;display:none;}
+.streak-badge.show{display:block;}
+.quiz-card{margin:14px 14px 0;background:#161616;border:1px solid #252525;border-radius:18px;padding:20px;width:calc(100% - 28px);}
+.q-cat-badge{display:inline-flex;align-items:center;gap:5px;background:#1a0000;border:1px solid #550000;color:#cc4444;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:50px;margin-bottom:12px;}
+.q-text{font-size:18px;font-weight:800;color:#f0f0f0;line-height:1.5;}
+.answers{display:flex;flex-direction:column;gap:10px;margin:12px 14px 0;}
+.ans-btn{background:#161616;border:1.5px solid #252525;border-radius:14px;padding:14px 16px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;color:#ccc;cursor:pointer;text-align:left;display:flex;align-items:center;gap:12px;transition:all .12s;width:100%;user-select:none;}
+.ans-btn:active:not(:disabled){background:#1f1f1f;}
+.ans-ltr{width:30px;height:30px;border-radius:50%;background:#222;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#666;flex-shrink:0;}
+.ans-btn.correct{background:#0c2a0c;border-color:#2a8a2a;color:#7dea7d;}
+.ans-btn.correct .ans-ltr{background:#2a8a2a;border-color:#2a8a2a;color:#fff;}
+.ans-btn.wrong{background:#2a0c0c;border-color:#aa2222;color:#ee7777;}
+.ans-btn.wrong .ans-ltr{background:#aa2222;border-color:#aa2222;color:#fff;}
+.feedback-card{margin:10px 14px 0;padding:13px 16px;border-radius:14px;font-size:14px;font-weight:700;line-height:1.5;display:none;}
+.feedback-card.show{display:block;}
+.feedback-card.correct{background:#0c2a0c;border:1px solid #2a8a2a;color:#7dea7d;}
+.feedback-card.wrong{background:#2a0c0c;border:1px solid #aa2222;color:#ee8888;}
+.fb-fact{color:#999;font-weight:600;margin-top:6px;font-size:13px;}
+.next-btn{margin:12px 14px 16px;width:calc(100% - 28px);background:#cc0000;color:#fff;border:none;border-radius:50px;padding:16px;font-family:'Fredoka One',cursive;font-size:17px;cursor:pointer;letter-spacing:.5px;display:none;transition:background .15s;}
+.next-btn.show{display:block;}
+.next-btn:active{background:#ee1111;}
+
+/* ===============================================
+   6. RESULTS SCREEN
+=============================================== */
+.results-inner{display:flex;flex-direction:column;align-items:center;gap:16px;padding:24px 20px 32px;width:100%;}
+.results-title{font-family:'Fredoka One',cursive;font-size:30px;text-align:center;}
+.results-title span{color:#cc0000;}
+.score-ring{width:140px;height:140px;border-radius:50%;border:4px solid #cc0000;background:#1a0000;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.ring-num{font-family:'Fredoka One',cursive;font-size:44px;color:#cc0000;line-height:1;}
+.ring-lbl{font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;}
+.stat-row{display:flex;gap:10px;width:100%;max-width:400px;}
+.stat-box{flex:1;background:#161616;border:1px solid #252525;border-radius:14px;padding:14px;text-align:center;}
+.stat-val{font-family:'Fredoka One',cursive;font-size:30px;}
+.stat-val.green{color:#7dea7d;}
+.stat-val.red2{color:#ee7777;}
+.stat-val.gold{color:#ffaa33;}
+.stat-lbl{font-size:11px;color:#555;margin-top:3px;letter-spacing:1px;text-transform:uppercase;}
+.result-msg{font-size:16px;color:#aaa;text-align:center;max-width:340px;line-height:1.6;}
+.result-btns{display:flex;gap:10px;width:100%;max-width:400px;}
+.btn-ghost{flex:1;background:transparent;border:1.5px solid #333;color:#bbb;border-radius:50px;padding:14px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:all .15s;}
+.btn-ghost:active{border-color:#cc0000;color:#fff;}
+.btn-fire{flex:1;background:#cc0000;border:none;color:#fff;border-radius:50px;padding:14px;font-family:'Fredoka One',cursive;font-size:16px;cursor:pointer;letter-spacing:.5px;transition:background .15s;}
+.btn-fire:active{background:#ee1111;}
+.results-footer{font-size:11px;color:#fff;letter-spacing:1px;text-transform:uppercase;}
+
+/* ===============================================
+   7. LEADERBOARD & SCORE SAVE
+=============================================== */
+.save-card,.leaderboard-card{width:100%;max-width:400px;background:#161616;border:1px solid #252525;border-radius:16px;padding:16px;}
+.leaderboard-card{display:flex;flex-direction:column;}
+.save-card{margin-top:0;}
+.card-title{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:#777;margin-bottom:12px;}
+.save-row{display:flex;gap:10px;align-items:stretch;width:100%;}
+.save-row .initials-input{min-width:0;}
+.save-row .save-btn{flex-shrink:0;}
+.initials-input{flex:1;background:#0f0f0f;border:1.5px solid #333;border-radius:12px;padding:14px 16px;color:#fff;font-size:24px;font-weight:900;letter-spacing:6px;text-transform:uppercase;text-align:center;outline:none;}
+.initials-input:focus{border-color:#cc0000;}
+.save-btn{background:#cc0000;border:none;color:#fff;border-radius:12px;padding:0 18px;font-family:'Fredoka One',cursive;font-size:16px;cursor:pointer;letter-spacing:.5px;min-width:110px;}
+.save-btn:disabled{opacity:.55;cursor:default;}
+.save-help,.save-status{font-size:12px;line-height:1.5;margin-top:10px;color:#888;text-align:center;}
+.save-status.ok{color:#7dea7d;}
+.save-status.err{color:#ee7777;}
+.lb-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
+.lb-tab{background:#111;border:1px solid #2a2a2a;color:#888;border-radius:12px;padding:10px 8px;font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
+.lb-tab.active{background:#cc0000;border-color:#cc0000;color:#fff;}
+.lb-list{display:flex;flex-direction:column;gap:8px;max-height:280px;overflow:auto;padding-right:2px;}
+.lb-item{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;background:#111;border:1px solid #242424;border-radius:12px;padding:10px 12px;}
+.lb-rank{font-family:'Fredoka One',cursive;font-size:18px;color:#666;text-align:center;}
+.lb-name{font-size:18px;font-weight:900;letter-spacing:2px;color:#fff;}
+.lb-meta{font-size:10px;color:#666;margin-top:2px;letter-spacing:1px;text-transform:uppercase;}
+.lb-score{font-family:'Fredoka One',cursive;font-size:22px;color:#cc0000;}
+.lb-empty{background:#111;border:1px dashed #333;border-radius:12px;padding:16px;text-align:center;color:#777;font-size:13px;line-height:1.6;}
+
+/* ===============================================
+   8. DENTAL SLIDESHOW
+=============================================== */
+.dental-screen{align-items:stretch;padding-bottom:28px;}
+.dental-inner{width:100%;max-width:900px;margin:0 auto;padding:12px 20px 28px;display:flex;flex-direction:column;gap:16px;}
+.dental-head{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.dental-title{font-family:'Fredoka One',cursive;font-size:30px;line-height:1.1;}
+.dental-title span{color:#58b9ff;}
+.dental-sub{font-size:14px;color:#9fb4c9;line-height:1.6;max-width:720px;}
+.dental-card{background:linear-gradient(180deg,#14181d,#101214);border:1px solid #25313d;border-radius:24px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.28);}
+.dental-slide-image{width:100%;aspect-ratio:16/9;border-radius:18px;border:1px solid #304252;background:#0f1620;display:block;object-fit:cover;}
+.dental-slide-title{font-family:'Fredoka One',cursive;font-size:28px;margin-top:16px;color:#fff;}
+.dental-slide-text{font-size:15px;color:#c8d5e3;line-height:1.7;margin-top:8px;}
+.dental-bullets{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px;}
+.dental-bullet{background:#111820;border:1px solid #243545;border-radius:16px;padding:12px 14px;color:#e6f1fb;font-size:15px;font-weight:700;line-height:1.5;display:flex;gap:10px;align-items:flex-start;}
+.dental-bullet span{font-size:18px;line-height:1;}
+.dental-tip{margin-top:14px;background:#102332;border:1px solid #2f6fa3;color:#cfeaff;border-radius:16px;padding:12px 14px;font-size:14px;line-height:1.6;}
+.dental-controls{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+.dental-nav{display:flex;gap:10px;flex-wrap:wrap;}
+.dental-nav button,.dental-chip{border:none;border-radius:999px;padding:12px 18px;font-weight:900;font-size:14px;cursor:pointer;}
+.dental-nav button{background:#1a2430;color:#fff;border:1px solid #2a3b4c;}
+.dental-nav button.primary{background:#2d7fc1;border-color:#2d7fc1;}
+.dental-chip{background:#0f1620;color:#9fc2dd;border:1px solid #2a3b4c;}
+.dental-chip strong{color:#fff;}
+.dental-dots{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+.dental-dot{width:10px;height:10px;border-radius:50%;background:#2b3640;border:none;cursor:pointer;}
+.dental-dot.active{background:#58b9ff;box-shadow:0 0 0 4px rgba(88,185,255,.15);}
+.dental-mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.dental-mini{background:#131a22;border:1px solid #25313d;border-radius:18px;padding:14px;}
+.dental-mini h4{font-size:15px;color:#fff;margin-bottom:6px;}
+.dental-mini p{font-size:13px;line-height:1.6;color:#b4c8da;}
+
+/* ===============================================
+   9. INFO / ABOUT FIRST SCREEN
+=============================================== */
+.info-screen{align-items:stretch;padding:20px;box-sizing:border-box;}
+.info-wrap{width:100%;max-width:900px;margin:0 auto;background:#111827;border:1px solid #243244;border-radius:24px;padding:22px;box-sizing:border-box;box-shadow:0 18px 45px rgba(0,0,0,.25);}
+.info-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;}
+.info-title{font-size:28px;font-weight:900;color:#fff;}
+.info-sub{font-size:14px;color:#cbd5e1;line-height:1.6;margin-bottom:18px;}
+.back-chip{background:#1d4ed8;border:none;color:#fff;border-radius:999px;padding:10px 16px;font-weight:800;font-size:14px;}
+.first-link{display:inline-block;background:#f59e0b;color:#111827;text-decoration:none;font-weight:900;border-radius:14px;padding:12px 16px;margin:4px 0 18px;}
+.faq-list{display:flex;flex-direction:column;gap:12px;}
+.faq-item{background:#0b1220;border:1px solid #223047;border-radius:16px;padding:14px 16px;}
+.faq-q{color:#fff;font-size:16px;font-weight:900;margin-bottom:6px;}
+.faq-a{color:#dbe4f0;font-size:14px;line-height:1.6;}
+.info-note{margin-top:16px;color:#93c5fd;font-size:13px;line-height:1.5;}
+
+/* ===============================================
+   10. KIOSK / ATTRACT MODE
+=============================================== */
+@keyframes homePulse{0%,100%{transform:scale(1);box-shadow:0 12px 28px rgba(0,0,0,.18);}50%{transform:scale(1.025);box-shadow:0 16px 34px rgba(255,255,255,.08);}}
+@keyframes firstGlow{0%,100%{transform:scale(1);box-shadow:0 12px 28px rgba(255,201,40,.26);}50%{transform:scale(1.03);box-shadow:0 16px 36px rgba(255,201,40,.42);}}
+body.attract-mode .launch-btn,body.attract-mode .dental-btn{animation:homePulse 1.9s ease-in-out infinite;}
+body.attract-mode .info-btn{animation:firstGlow 1.9s ease-in-out infinite;}
+body.attract-mode .attract-message{opacity:1;transform:translateY(-2px);}
+
+/* ===============================================
+   11. RESPONSIVE -- tablet / wide (850px+)
+=============================================== */
+@media (min-width:850px){
+    #app{max-width:980px;}
+    .home-hero img{width:190px;height:190px;}
+    .quiz-card,.answers,.feedback-card,.next-btn{max-width:860px;width:calc(100% - 40px);margin-left:auto;margin-right:auto;}
+    .results-inner{max-width:920px;margin:0 auto;}
+    .dental-bullets{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:640px){
+    .info-title{font-size:22px;}
+    .info-wrap{padding:16px;}
+}
