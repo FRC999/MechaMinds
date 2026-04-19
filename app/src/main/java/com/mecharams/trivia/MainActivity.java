@@ -67,7 +67,11 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if (webView != null) {
+        if (webView != null && webView.canGoBack()) {
+            // Navigate back through WebView history (handles external sites, sub-pages, etc.)
+            webView.goBack();
+        } else if (webView != null) {
+            // At the root of WebView history — try JS goHome() for in-app screen navigation
             webView.evaluateJavascript(
                 "(function(){var a=document.querySelector('.screen.active'); if(a && a.id!=='home'){ if(window.goHome){ goHome(); return 'handled'; } } return 'home'; })();",
                 null
