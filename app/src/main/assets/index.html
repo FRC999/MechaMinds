@@ -375,6 +375,7 @@
     function openDentalShow(){window.location.href='dental.html';}
 
     document.addEventListener("DOMContentLoaded",()=>{
+      show("home");
       const input=document.getElementById("initialsInput");
       input.addEventListener("input",()=>{input.value=sanitizeInitials(input.value);refreshSaveControls();});
       input.addEventListener("keydown",e=>{if(e.key==="Enter"&&!document.getElementById("saveScoreBtn").disabled)saveScore();});
