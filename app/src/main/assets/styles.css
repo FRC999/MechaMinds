@@ -19,7 +19,7 @@ body{font-family:'Nunito',Arial,sans-serif;color:#fff;overscroll-behavior:none;}
    3. SHARED COMPONENTS -- top bar, section labels
 =============================================== */
 .top-bar{background:#111;width:100%;padding:10px 16px;display:flex;align-items:center;gap:12px;border-bottom:2px solid #cc0000;flex-shrink:0;}
-.top-bar img{width:44px;height:44px;object-fit:contain;border-radius:8px;flex-shrink:0;}
+.top-bar img{width:44px;height:44px;object-fit:contain;border-radius:8px;flex-shrink:0;cursor:pointer;}
 .bar-name{font-family:'Fredoka One',cursive;font-size:17px;color:#cc0000;letter-spacing:.5px;}
 .bar-name-sm{font-size:13px;}
 .bar-sub{font-size:10px;color:#fff;letter-spacing:1px;text-transform:uppercase;margin-top:1px;}
