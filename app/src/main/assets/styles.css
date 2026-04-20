@@ -25,8 +25,6 @@ body{font-family:'Nunito',Arial,sans-serif;color:#fff;overscroll-behavior:none;}
 .bar-sub{font-size:10px;color:#fff;letter-spacing:1px;text-transform:uppercase;margin-top:1px;}
 .topbar-text{margin-left:4px;}
 .top-bar-logo-sm{width:30px!important;height:30px!important;}
-.home-chip{margin-left:auto;background:#1a1a1a;border:1.5px solid #333;color:#ccc;border-radius:50px;padding:6px 14px;font-size:13px;font-weight:800;cursor:pointer;}
-.home-chip:active{background:#cc0000;border-color:#cc0000;color:#fff;}
 .sec-lbl{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#555;align-self:flex-start;padding:0 20px;margin-top:22px;margin-bottom:10px;}
 .sec-lbl-spaced{margin-top:20px;}
 .footer-tag{font-size:11px;color:#fff;margin-top:20px;letter-spacing:1px;text-transform:uppercase;}
