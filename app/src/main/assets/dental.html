@@ -4,18 +4,9 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 <title>Healthy Smile Slideshow – MechaRams 999</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<link rel="stylesheet" href="styles.css"/>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{background:#0d0d0d;color:#fff;font-family:'Nunito',Arial,sans-serif;overscroll-behavior:none;}
-#app{max-width:600px;margin:0 auto;min-height:100vh;background:#0d0d0d;}
-.top-bar{background:#111;width:100%;padding:10px 16px;display:flex;align-items:center;gap:12px;border-bottom:2px solid #cc0000;}
-.top-bar img{width:44px;height:44px;object-fit:contain;border-radius:8px;}
-.bar-name{font-family:'Fredoka One',cursive;font-size:17px;color:#cc0000;}
-.bar-sub{font-size:10px;color:#fff;letter-spacing:1px;text-transform:uppercase;margin-top:1px;}
-.home-hero{width:100%;background:#111;padding:20px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #1e1e1e;}
-.home-hero img{width:44px;height:44px;object-fit:contain;border-radius:8px;flex-shrink:0;}
-.back-chip{background:#1d4ed8;border:none;color:#fff;border-radius:999px;padding:10px 16px;font-weight:800;font-size:14px;cursor:pointer;}
 .dental-inner{width:100%;max-width:900px;margin:0 auto;padding:16px 20px 40px;display:flex;flex-direction:column;gap:16px;}
 .dental-head{display:flex;align-items:center;justify-content:space-between;gap:12px;}
 .dental-title{font-family:'Fredoka One',cursive;font-size:30px;line-height:1.1;}
@@ -49,15 +40,13 @@ html,body{background:#0d0d0d;color:#fff;font-family:'Nunito',Arial,sans-serif;ov
 <body>
 <div id="app">
 <div class="top-bar">
-  <img src="logo.png" alt="MechaRams"/>
+    <img src="logo.png" alt="MechaRams" onclick="window.location.href='index.html'" style="cursor:pointer;"/>
     <div>
         <div class="bar-name">MechaRams 999</div>
-        <div class="bar-sub">Cheshire High School  FRC</div>
+        <div class="bar-sub">Healthy Smile Slideshow</div>
     </div>
-</div>
-    <div class="home-hero">
-        <img src="logo.png" alt="MechaRams"/>
-  <div><div class="bar-name">MechaRams 999</div><div class="bar-sub">Dentist Edition</div></div>
+    <button class="home-chip" onclick="window.location.href='index.html'">⌂ Home</button>
+</div><div class="bar-sub">Dentist Edition</div></div>
 </div>
 <div class="dental-inner">
   <div class="dental-head">
@@ -65,7 +54,7 @@ html,body{background:#0d0d0d;color:#fff;font-family:'Nunito',Arial,sans-serif;ov
       <div class="dental-title">Healthy Smile <span>Slideshow</span> 🦷</div>
       <div class="dental-sub">A tablet-friendly learning show about healthy teeth, proper brushing, proper flossing, and common dental problems. Built for waiting-room education.</div>
     </div>
-    <button class="back-chip" onclick="history.back()">← Back</button>
+    
   </div>
   <div class="dental-card">
     <img id="dentalSlideImage" class="dental-slide-image" alt="Dental slide illustration"/>
