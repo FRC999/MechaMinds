@@ -71,9 +71,10 @@ public class MainActivity extends Activity {
             // Navigate back through WebView history (handles external sites, sub-pages, etc.)
             webView.goBack();
         } else if (webView != null) {
-            // At the root of WebView history — try JS goHome() for in-app screen navigation
+            // At the root of WebView history — use JS goHome() for in-app screen navigation.
+            // Pages are shown via display:flex, not a .screen.active class, so check each by id.
             webView.evaluateJavascript(
-                "(function(){var a=document.querySelector('.screen.active'); if(a && a.id!=='home'){ if(window.goHome){ goHome(); return 'handled'; } } return 'home'; })();",
+                "(function(){ var ids=['quiz','results']; for(var i=0;i<ids.length;i++){ var el=document.getElementById(ids[i]); if(el && el.style.display==='flex'){ if(window.goHome) goHome(); return; } } })();",
                 null
             );
         }
